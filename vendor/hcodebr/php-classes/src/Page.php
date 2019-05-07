@@ -21,7 +21,7 @@
 		{
 
 			$this->options = array_merge($this->defaults, $opts);
-
+			
 			$config = array(
 				"tpl_dir"       => $_SERVER['DOCUMENT_ROOT'].$tpl_dir,
 				"cache_dir"     => $_SERVER['DOCUMENT_ROOT']."/views-cache/",
@@ -34,7 +34,7 @@
 
 			$this->setData($this->options['data']);
 
-			if ($this->options['header']) $this->tpl->draw('header');
+			if ($this->options['header'] === true) $this->tpl->draw('header');
 
 		}
 
@@ -42,7 +42,7 @@
 		
 		{
 
-			if ($this->options['footer']) $this->tpl->draw('footer');
+			if ($this->options['footer'] === true) $this->tpl->draw('footer');
 
 		}
 
