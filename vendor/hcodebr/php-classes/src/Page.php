@@ -10,6 +10,8 @@
 
 		private $tpl;
 		private $defaults = array(
+			"header" => true,
+			"footer" => true,
 			"data" => array()
 		);
 		private $options = array();
@@ -32,7 +34,7 @@
 
 			$this->setData($this->options['data']);
 
-			$this->tpl->draw('header');
+			if ($this->options['header']) $this->tpl->draw('header');
 
 		}
 
@@ -40,7 +42,7 @@
 		
 		{
 
-			$this->tpl->draw('footer');
+			if ($this->options['footer']) $this->tpl->draw('footer');
 
 		}
 
