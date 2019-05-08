@@ -51,10 +51,10 @@
 
 		{
 
-			if (!isset($_SESSION[User::SESSION]) || !$_SESSION[User::SESSION] || (int)$_SESSION[User::SESSION]["iduse"] > 0 || (bool)$_SESSION[User::SESSION]["inadmin"] !== $inAdmin) {
+			if (!isset($_SESSION[User::SESSION]) || !$_SESSION[User::SESSION] || (int)$_SESSION[User::SESSION]["iduser"] < 0 || (bool)$_SESSION[User::SESSION]["inadmin"] !== $inAdmin) {
 
-				// header("Location: /admin/login");
-				// exit;
+				header("Location: /admin/login");
+				exit;
 
 			}
 
