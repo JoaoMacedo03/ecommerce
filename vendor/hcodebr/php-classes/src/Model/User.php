@@ -204,7 +204,7 @@
 
 		{
 
-			$idRecovery = openssl_decrypt(base64_decode($code), 'AES-128-CBC', User::SECRET, 0, User:;SECRET_IV);
+			$idRecovery = openssl_decrypt(base64_decode($code), 'AES-128-CBC', User::SECRET, 0, User::SECRET_IV);
 
 			$sql = new Sql();
 
@@ -236,7 +236,7 @@
 
 		}
 
-		public funtion setPassword($password) 
+		public function setPassword($password) 
 
 		{
 
