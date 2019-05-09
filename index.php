@@ -10,6 +10,8 @@
 
 	$app->config('debug', true);
 
+	//==============================================REQUIRE GERAL===========================================//
+	require_once("functions.php");
 	//==============================================REQUIRE SITE===========================================//
 	require_once("site.php");
 	require_once("site-categories.php");
