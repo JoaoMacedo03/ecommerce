@@ -15,7 +15,7 @@
 
 			$sql = new Sql();
 
-			return $sql->select("SELECT * FROM tb_categories ORDER BY descategory");
+			return $sql->select("SELECT * FROM tb_products ORDER BY desproduct");
 
 		}
 
@@ -26,12 +26,13 @@
 			$sql = new Sql();
 
 			$results = $sql->select("CALL sp_products_save(:idproduct, :desproduct, :vlprice, :vlwidth, :vlheight, :vllength, :vlweight, :desurl)", array(
-				":idcategory" => $this->getidcategory(),
-				":descategory" => $this->getdescategory(),
-				":vlprice" => $this->getdvlprice(),
+				":idproduct" => $this->getidproduct(),
+				":desproduct" => $this->getdesproduct(),
+				":vlprice" => $this->getvlprice(),
 				":vlwidth" => $this->getvlwidth(),
 				":vlheight" => $this->getvlheight(),
-				":vllength" => $this->getdvllength(),
+				":vllength" => $this->getvllength(),
+				":vlweight" => $this->getvlweight(),
 				":desurl" => $this->getdesurl()
 			));
 

@@ -1,5 +1,8 @@
 <?php 
 
+	use Hcode\Page;
+	use \Hcode\Model\Category;
+
 	$app->get("/categories/:idcategory", function($idcategory) {
 
 		$category = new Category();

@@ -9,7 +9,7 @@
 	{
 
 		const USERNAME = "disparadordeemailjoao@gmail.com";
-		const PASSWORD = "";
+		const PASSWORD = "(Leon/Magnus)68";
 		const NAME_FROM = "Robo Joao";
 
 		private $mail;
@@ -19,7 +19,7 @@
 		{
 
 			$config = array(
-				"tpl_dir"       => $_SERVER['DOCUMENT_ROOT']."/views/email",
+				"tpl_dir"       => $_SERVER['DOCUMENT_ROOT']."/views/email/",
 				"cache_dir"     => $_SERVER['DOCUMENT_ROOT']."/views-cache/",
 				"debug"         => false // set to false to improve the speed
 			);
@@ -34,8 +34,8 @@
 
 			}
 
-			$html = $tpl->draw($tplName, true);
-
+			$html = $tpl->draw('forgot', true);
+			
 			// //Create a new PHPMailer instance
 			$this->mail = new \PHPMailer;
 

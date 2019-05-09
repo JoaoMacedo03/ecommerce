@@ -4,6 +4,7 @@
 
 	use \Hcode\DB\Sql;
 	use \Hcode\Model;
+	use \Hcode\Mailer;
 
 	class User extends Model
 
@@ -11,6 +12,7 @@
 
 		const SESSION = "User";
 		const SECRET = "HcodePhp7_Secret"; //Tem que ter pelo menos 16 caracteres no secret
+		const SECRET_IV = "HcodePhp7_Secret"; //Tem que ter pelo menos 16 caracteres no secret
 
 		public static function login($login, $password) 
 
@@ -54,8 +56,8 @@
 
 			if (!isset($_SESSION[User::SESSION]) || !$_SESSION[User::SESSION] || (int)$_SESSION[User::SESSION]["iduser"] <= 0 || (bool)$_SESSION[User::SESSION]["inadmin"] !== $inAdmin) {
 
-				// header("Location: /admin/login");
-				// exit;
+				header("Location: /admin/login");
+				exit;
 
 			}
 
@@ -150,8 +152,8 @@
 
 			$sql = new Sql();
 
-			$results = select("SELECT * FROM tb_persons p INNER JOIN tb_users u USING(idperson) WHERE p.email = :EMAIL", array(
-				":EMAIL" => $email
+			$results = $sql->select("SELECT * FROM tb_persons p INNER JOIN tb_users u USING(idperson) WHERE p.desemail = :email", array(
+				":email" => $email
 			));
 
 			if(count($results) === 0) {
