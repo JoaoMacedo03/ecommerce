@@ -13,13 +13,13 @@
 	//==============================================REQUIRE GERAL===========================================//
 	require_once("functions.php");
 	//==============================================REQUIRE SITE===========================================//
-	require_once("site.php");
-	require_once("site-categories.php");
+	require_once("routes/site/site.php");
+	require_once("routes/site/site-categories.php");
 	//==============================================REQUIRE ADMIN===========================================//
-	require_once("admin.php");
-	require_once("admin-users.php");
-	require_once("admin-categories.php");
-	require_once("admin-products.php");
+	require_once("routes/admin/admin.php");
+	require_once("routes/admin/admin-users.php");
+	require_once("routes/admin/admin-categories.php");
+	require_once("routes/admin/admin-products.php");
 	//======================================================================================================//
 	
 	$app->run();

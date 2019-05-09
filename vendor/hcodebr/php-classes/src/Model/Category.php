@@ -129,5 +129,27 @@
 			));
 
 		}
+
+		public function getProductsPage($page = 1, $itemsPerPage = 8) 
+
+		{
+
+			$start = ($page - 1) * $itemsPerPage;
+
+			$sql = new Sql();
+
+			$results = $sql->select("SELECT SQL_CALC_FOUND_ROWS * FROM tb_products p INNER JOIN tb_productscategories pc ON p.idproduct = pc.idproduct INNER JOIN tb_categories c ON c.idcategory = pc.idcategory WHERE c.idcategory = :idcategory LIMIT $start, $itemsPerPage", array(
+				":idcategory" => $this->idcategory()
+			));
+
+			$resultsTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+
+			return array(
+				"data" => Product::checkList($results),
+				"total" => (int) $resultsTotal[0]["nrtotal"],
+				"pages" => ceil($resultsTotal[0]["nrtotal"] / $itemsPerPage)	
+				);
+
+		}
 		
 	}
