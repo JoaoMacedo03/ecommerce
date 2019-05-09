@@ -80,6 +80,54 @@
 
 			file_put_contents($_SERVER["DOCUMENT_ROOT"] . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "categories-menu.html", implode("", $html));
 
-		} 
+		}
+
+		public function getProducts($related = true) 
+
+		{
+
+			$sql = new Sql();
+
+			if($related === true) {
+
+				return $sql->select("SELECT * FROM tb_products WHERE idproduct IN (SELECT * FROM tb_products p INNER JOIN tb_productscategories pc ON p.idproduct = pc.idproduct WHERE pc.idcategory = :idcategory);", array(
+					":idcategory" => $this->getidcategory()
+				));
+
+			} else {
+
+				return $sql->select("SELECT * FROM tb_products WHERE idproduct NOT IN (SELECT * FROM tb_products p INNER JOIN tb_productscategories pc ON p.idproduct = pc.idproduct WHERE pc.idcategory = :idcategory);", array(
+					":idcategory" => $this->getidcategory()
+				));
+
+			}
+
+		}
+
+		public function addProduct(Product $product) 
+
+		{
+
+			$sql = new Sql();
+
+			$sql->query("INSERT INTO tb_productscategories (idcategory, idproduct) VALUES (:idcategory, :idproduct)", array(
+				":idcategory" => $this->getidcategory(),
+				":idproduct" => $product->getidproduct()
+			));
+
+		}
+
+		public function removeProduct(Product $product) 
+
+		{
+
+			$sql = new Sql();
+
+			$sql->query("DELETE FROM tb_productscategories WHERE idcategory = :idcategory AND idproduct = :idproduct", array(
+				":idcategory" => $this->getidcategory(),
+				":idproduct" => $product->getidproduct()
+			));
+
+		}
 		
 	}
