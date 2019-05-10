@@ -106,9 +106,7 @@
 
 			$this->checkPhoto();
 
-			parent::getValues();
-
-			return $values;
+			return parent::getValues();
 
 		}
 
@@ -142,11 +140,15 @@
 				
 			}
 
-			$destiny = $_SERVER["DOCUMENT_ROOT"] . DIRECTORY_SEPARATOR . "res" . DIRECTORY_SEPARATOR . "site" . DIRECTORY_SEPARATOR . "img" . DIRECTORY_SEPARATOR . "products" . DIRECTORY_SEPARATOR . $this->getidproduct() . ".jpg";
+			if(!empty($image)) {
 
-			imagejpeg($image, $destiny);
+				$destiny = $_SERVER["DOCUMENT_ROOT"] . DIRECTORY_SEPARATOR . "res" . DIRECTORY_SEPARATOR . "site" . DIRECTORY_SEPARATOR . "img" . DIRECTORY_SEPARATOR . "products" . DIRECTORY_SEPARATOR . $this->getidproduct() . ".jpg";
 
-			imagedestroy($image);
+				imagejpeg($image, $destiny);
+
+				imagedestroy($image);
+
+			}
 
 			$this->checkPhoto();
 

@@ -90,13 +90,13 @@
 
 			if($related === true) {
 
-				return $sql->select("SELECT * FROM tb_products WHERE idproduct IN (SELECT * FROM tb_products p INNER JOIN tb_productscategories pc ON p.idproduct = pc.idproduct WHERE pc.idcategory = :idcategory);", array(
+				return $sql->select("SELECT * FROM tb_products WHERE idproduct IN (SELECT p.idproduct FROM tb_products p INNER JOIN tb_productscategories pc ON p.idproduct = pc.idproduct WHERE pc.idcategory = :idcategory);", array(
 					":idcategory" => $this->getidcategory()
 				));
 
 			} else {
 
-				return $sql->select("SELECT * FROM tb_products WHERE idproduct NOT IN (SELECT * FROM tb_products p INNER JOIN tb_productscategories pc ON p.idproduct = pc.idproduct WHERE pc.idcategory = :idcategory);", array(
+				return $sql->select("SELECT * FROM tb_products WHERE idproduct NOT IN (SELECT p.idproduct FROM tb_products p INNER JOIN tb_productscategories pc ON p.idproduct = pc.idproduct WHERE pc.idcategory = :idcategory);", array(
 					":idcategory" => $this->getidcategory()
 				));
 
@@ -139,7 +139,7 @@
 			$sql = new Sql();
 
 			$results = $sql->select("SELECT SQL_CALC_FOUND_ROWS * FROM tb_products p INNER JOIN tb_productscategories pc ON p.idproduct = pc.idproduct INNER JOIN tb_categories c ON c.idcategory = pc.idcategory WHERE c.idcategory = :idcategory LIMIT $start, $itemsPerPage", array(
-				":idcategory" => $this->idcategory()
+				":idcategory" => $this->getidcategory()
 			));
 
 			$resultsTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
@@ -148,7 +148,7 @@
 				"data" => Product::checkList($results),
 				"total" => (int) $resultsTotal[0]["nrtotal"],
 				"pages" => ceil($resultsTotal[0]["nrtotal"] / $itemsPerPage)	
-				);
+			);
 
 		}
 		
