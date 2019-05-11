@@ -153,5 +153,31 @@
 			$this->checkPhoto();
 
 		}
+
+		public function getFromUrl($desurl) 
+
+		{
+
+			$sql = new Sql();
+
+			$result = $sql->select("SELECT * FROM tb_products WHERE desurl = :desurl LIMIT 1", array(
+				":desurl" => $desurl
+			));
+
+			$this->setData($result[0]);
+
+		}
+
+		public function getCategories() 
+
+		{
+
+			$sql = new Sql();
+
+			return $sql->select("SELECT * FROM tb_categories c INNER JOIN tb_productscategories pc ON c.idcategory = pc.idcategory WHERE pc.idproduct = :idproduct", array(
+				":idproduct" => $this->getidproduct()
+			));
+
+		}
 		
 	}
