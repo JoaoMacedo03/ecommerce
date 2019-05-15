@@ -56,6 +56,18 @@
 
 			$sql = new Sql();
 
+			$results = 0;
+
+			$results = $sql->select("SELECT count(*) AS qtd FROM tb_productscategories WHERE idcategory = :idcategory", array(
+				":idcategory" => $this->getidcategory()
+			));
+
+			if($results[0]["qtd"] > 0) {
+
+				throw new \Exception("Não é possível excluir uma categoria que tenha produtos vinculados.");
+
+			}
+
 			$sql->query("DELETE FROM tb_categories WHERE idcategory = :idcategory", array(
 				":idcategory" => $this->getidcategory()
 			));

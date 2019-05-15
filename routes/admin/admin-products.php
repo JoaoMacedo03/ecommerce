@@ -31,7 +31,7 @@
 	$app->post("/admin/products/create", function() {
 
 		User::verifyLogin();
-
+		
 		$product = new Product();
 
 		$product->setData($_POST);
