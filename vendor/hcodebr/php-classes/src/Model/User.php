@@ -30,22 +30,22 @@
 
 		}
 
-		public static function checkLogin($inadmin = true) 
+		public static function checkLogin($inAdmin = true) 
 
 		{
 
 			if(!isset($_SESSION[User::SESSION]) || !$_SESSION[User::SESSION] || (int)$_SESSION[User::SESSION]["iduser"] <= 0) {
-
+					;
 				//Não está logado
 				return false;
 
 			} else {
 
-				if($inadmin === true && (bool)$_SESSION[User::SESSION]["iduser"] === true) {
+				if($inAdmin === true && (bool)$_SESSION[User::SESSION]["iduser"] === true) {
 
 					return true;
 
-				} else if($inadmin === false) {
+				} else if($inAdmin === false) {
 
 					return true;
 
@@ -99,7 +99,7 @@
 
 		{
 
-			if (User::checkLogin($inadmin)) {
+			if (!User::checkLogin($inAdmin)) {
 
 				header("Location: /admin/login");
 				exit;

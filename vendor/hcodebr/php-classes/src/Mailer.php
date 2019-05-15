@@ -9,7 +9,7 @@
 	{
 
 		const USERNAME = "disparadordeemailjoao@gmail.com";
-		const PASSWORD = "";
+		const PASSWORD = "(Leon/Magnus)68";
 		const NAME_FROM = "Robo Joao";
 
 		private $mail;
