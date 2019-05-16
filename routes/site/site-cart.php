@@ -14,7 +14,9 @@
 			"cart" => $cart->getValues(),
 			"products" => $cart->getProducts(),
 			"error" => Cart::getMsgError()
-		});
+		));
+		
+	});
 
 	$app->get("/cart/:idproduct/add", function($idproduct) {
 
