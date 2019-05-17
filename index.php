@@ -18,6 +18,7 @@
 	require_once("routes/site/site-products.php");
 	require_once("routes/site/site-cart.php");
 	require_once("routes/site/site-login.php");
+	require_once("routes/site/site-profile.php");
 	//==============================================REQUIRE ADMIN===========================================//
 	require_once("routes/admin/admin.php");
 	require_once("routes/admin/admin-users.php");

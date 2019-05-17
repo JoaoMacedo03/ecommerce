@@ -5,9 +5,11 @@
 
 	$app->get('/', function() {
 
+		$products = Product::listAll();
+
 		$page = new Page();
 
-		$page->setTpl("forgot");
+		$page->setTpl("index");
 
 	});
 
