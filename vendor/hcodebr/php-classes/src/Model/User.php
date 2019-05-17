@@ -329,7 +329,7 @@
 
 			User::clearError();
 
-			return $msg
+			return $msg;
  
 		}
 

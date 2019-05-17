@@ -179,7 +179,7 @@
 
 			$sql = new Sql();
 
-			$results = $sql->select("SELECT SUM(p.vlprice) AS vlprice, SUM(p.vlwidth) AS vlwidth, SUM (p.vlheight) AS vlheight, SUM (p.vlweight) AS vlweight, SUM (vllength) AS vllength, COUNT(*) AS nrqtd FROM tb_products p INNER JOIN tb_cartsproducts cp ON p.idproduct = cp.idproduct WHERE cp.idcart = :idcart AND dtremoved IS NULL", array(
+			$results = $sql->select("SELECT SUM(p.vlprice) AS vlprice, SUM(p.vlwidth) AS vlwidth, SUM(p.vlheight) AS vlheight, SUM(p.vlweight) AS vlweight, SUM(vllength) AS vllength, COUNT(*) AS nrqtd FROM tb_products p INNER JOIN tb_cartsproducts cp ON p.idproduct = cp.idproduct WHERE cp.idcart = :idcart AND dtremoved IS NULL", array(
 				":idcart" => $this->getidcart()
 			));
 
@@ -280,7 +280,7 @@
 
 			Cart::clearMsgError();
 
-			return $msg
+			return $msg;
  
 		}
 
